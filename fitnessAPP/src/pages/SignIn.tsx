@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet, ScrollView, KeyboardAvoidingV
 import { CheckBox, Icon, SocialIcon } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import PrimaryBtn from '../components/PrimaryBtn';
-// import _ from 'lodash';
+import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function LogIn() {
@@ -19,98 +19,92 @@ export default function LogIn() {
     setSecureEntry(!secureEntry);
   };
 
-  // social media icons action
-  const dataList = [
-    { type: 'facebook' },
-    { type: 'twitter' },
-    { type: 'apple' },
-  ];
-
   return (
-    <SafeAreaView style={{ backgroundColor: 'black' }}>
-      <KeyboardAvoidingView>
-        <View>
-          {/* page header */}
-          <View style={styles.container1}>
+    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#ba1638', '#2c1737']}>
+        <SafeAreaView>
+          <KeyboardAvoidingView>
             <View>
-              <Text style={styles.headerText1}>Hello</Text>
-              <Text style={styles.headerText2}>Sign In</Text>
-            </View>
-          </View>
-          {/* main container */}
-          <View style={styles.container2}>
-            <View style={styles.view2}>
-              <View>
-                <Text style={styles.label}>Email</Text>
-                <View style={styles.inputFieldContainer}>
-                  <TextInput
-                    style={styles.inputField}
-                    keyboardType='email-address'
-                    placeholder='anything@gmail.com'
-                    placeholderTextColor="#52545c"
-                    value={text}
-                    onChangeText={(text) => setText(text)}
-                  />
+              {/* page header */}
+              <View style={styles.container1}>
+                <View>
+                  <Text style={styles.headerText1}>Hello</Text>
+                  <Text style={styles.headerText2}>Sign In</Text>
                 </View>
               </View>
-              <View>
-                <Text style={styles.label}>Password</Text>
-                <View style={styles.inputFieldContainer}>
-                  <TextInput
-                    style={styles.inputField}
-                    keyboardType='numeric'
-                    placeholder='password'
-                    placeholderTextColor="#52545c"
-                    secureTextEntry={secureEntry}
-                    value={password}
-                    // onChangeText={(text) => setPassword(text)}
-                    onChangeText={(text: string) => setPassword(text)}
-                  />
-                  <Ionicons name={secureEntry ? 'eye' : 'eye-off'} size={24} color="grey" onPress={toggleSecureEntry} />
+              {/* main container */}
+              <View style={styles.container2}>
+                <View style={styles.view2}>
+                  <View>
+                    <Text style={styles.label}>Email</Text>
+                    <View style={styles.inputFieldContainer}>
+                      <TextInput
+                        style={styles.inputField}
+                        keyboardType='email-address'
+                        placeholder='anything@gmail.com'
+                        placeholderTextColor="#52545c"
+                        value={text}
+                        onChangeText={(text) => setText(text)}
+                      />
+                    </View>
+                  </View>
+                  <View>
+                    <Text style={styles.label}>Password</Text>
+                    <View style={styles.inputFieldContainer}>
+                      <TextInput
+                        style={styles.inputField}
+                        keyboardType='numeric'
+                        placeholder='password'
+                        placeholderTextColor="#52545c"
+                        secureTextEntry={secureEntry}
+                        value={password}
+                        // onChangeText={(text) => setPassword(text)}
+                        onChangeText={(text: string) => setPassword(text)}
+                      />
+                      <Ionicons name={secureEntry ? 'eye' : 'eye-off'} size={24} color="grey" onPress={toggleSecureEntry} />
+                    </View>
+                  </View>
+                  <View style={styles.view3}>
+                    <View style={styles.checkbox}>
+                      <CheckBox
+                        size={23}
+                        checked={checked}
+                        checkedColor={checked ? "#390d7c" : "black"}
+                        onPress={toggleCheckbox}
+                      />
+                      <Text style={{ color: checked ? "grey" : "grey" }}>
+                        {checked
+                          ? "Password saved"
+                          : "Remember me"}
+                      </Text>
+                    </View>
+                    <TouchableOpacity>
+                      <Text style={styles.forgotPasswordText}>Forgot Password</Text>
+                    </TouchableOpacity>
+                  </View>
+
                 </View>
-              </View>
-              <View style={styles.view3}>
-                <View style={styles.checkbox}>
-                  <CheckBox
-                    size={23}
-                    checked={checked}
-                    checkedColor={checked ? "#390d7c" : "black"}
-                    onPress={toggleCheckbox}
-                  />
-                  <Text style={{ color: checked ? "grey" : "grey" }}>
-                    {checked
-                      ? "Password saved"
-                      : "Remember me"}
-                  </Text>
+
+                <View>
+                  <PrimaryBtn label="SIGN IN" />
                 </View>
-                <TouchableOpacity>
-                  <Text style={styles.forgotPasswordText}>Forgot Password</Text>
-                </TouchableOpacity>
+                <View style={styles.view5}>
+                  <Text>Don't have an account?</Text>
+                  <TouchableOpacity>
+                    <Text style={styles.forgotPasswordText}>SIGN UP</Text>
+                  </TouchableOpacity>
+                </View>
+
               </View>
-
             </View>
-
-            <View>
-              <PrimaryBtn label="SIGN IN" />
-            </View>
-            <View style={styles.view5}>
-              <Text>Don't have an account?</Text>
-              <TouchableOpacity>
-                <Text style={styles.forgotPasswordText}>SIGN UP</Text>
-              </TouchableOpacity>
-            </View>
-
-          </View>
-        </View>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+          </KeyboardAvoidingView>
+        </SafeAreaView>
+      </LinearGradient>
   )
 }
 
 const styles = StyleSheet.create({
 
   container1: {
-    backgroundColor: 'black',
     height: '25%',
     justifyContent: 'center',
     alignItems: 'flex-start',
@@ -183,7 +177,6 @@ const styles = StyleSheet.create({
 
   },
 });
-
 
 
 

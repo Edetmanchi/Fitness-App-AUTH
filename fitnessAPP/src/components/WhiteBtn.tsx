@@ -1,10 +1,16 @@
 import { View, Text , StyleSheet, TouchableOpacity} from 'react-native'
 import React from 'react'
-import { black } from 'react-native-paper/lib/typescript/styles/themes/v2/colors'
+import { StackNavigationProp } from '@react-navigation/stack';
 
-const WhiteBtn = ({label}) => {
+interface WhiteBtnProps {
+  onPress: () => void;
+  navigation: StackNavigationProp<RootStackParamList>;
+  label: string;
+}
+
+const WhiteBtn:React.FC<WhiteBtnProps> = ({onPress, navigation, label}) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
         <Text style={styles.btnText}>{label}</Text>
     </TouchableOpacity>
   )
@@ -13,7 +19,7 @@ const WhiteBtn = ({label}) => {
 export default WhiteBtn
 const styles = StyleSheet.create({
     container:{
-        backgroundColor:"white",
+        backgroundColor:"#ffffff",
         paddingVertical: 14,
         borderRadius: 32,
 
