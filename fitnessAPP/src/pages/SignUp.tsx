@@ -19,7 +19,7 @@
     });
 
 
-export default function SignUp: React.FC<SignUpProp>({onPress, navigation, label}) {
+const SignUp:React.FC<SignUpProps> = ({onPress, navigation, label}) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -30,9 +30,9 @@ export default function SignUp: React.FC<SignUpProp>({onPress, navigation, label
     };
 
 
-    type SignUpProps = {
-        navigation: NavigationProp<RootStackParamList, 'SignUp'>;
-    };    
+    // type SignUpProps = {
+    //     navigation: <NavigationProps></NavigationProps><RootStackParamList, 'SignUp'>;
+    // };    
         const navigateToSignIn =()=>{
             navigation.navigate("SignIn")
         }
@@ -168,6 +168,7 @@ export default function SignUp: React.FC<SignUpProp>({onPress, navigation, label
         </LinearGradient>
     );
     }
+export default SignUp
 
     const styles = StyleSheet.create({
         container1: {
